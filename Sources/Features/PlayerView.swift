@@ -11,11 +11,17 @@ import AVFoundation
 import UIKit
 
 public struct PlayerView: UIViewRepresentable {
+    private let fileUrl: URL
+
     public func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<PlayerView>) {
     }
 
     public func makeUIView(context: Context) -> UIView {
-        return LoopingPlayerUIView(frame: .zero)
+        return LoopingPlayerUIView(frame: .zero, fileUrl: fileUrl)
+    }
+
+    public init(fileUrl: URL) {
+        self.fileUrl = fileUrl
     }
 }
 
@@ -27,10 +33,8 @@ final public class LoopingPlayerUIView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public override init(frame: CGRect) {
+    public init(frame: CGRect, fileUrl: URL) {
         super.init(frame: frame)
-        // TODO: - Make url injectable
-        let fileUrl = Bundle.main.url(forResource: "workout-onboarding", withExtension: "mp4")!
         let asset = AVAsset(url: fileUrl)
         let item = AVPlayerItem(asset: asset)
         // Setup the player
