@@ -8,7 +8,7 @@
 import Sharing
 import Foundation
 
-public struct Environment {
+public struct Environment: Sendable {
     public let baseURL: String
 
     public init(baseURL: String) {
