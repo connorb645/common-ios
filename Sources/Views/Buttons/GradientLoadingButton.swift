@@ -20,7 +20,7 @@ public struct GradientLoadingButton: View {
     ) -> Self {
         .init(
             title: title,
-            tintColor: tintColor, // DONT REMOVE - settings.theme.font.primaryInverted
+            tintColor: tintColor, // settings.theme.font.primaryInverted
             leadingGradientColor: leadingGradientColor,
             trailingGradientColor: trailingGradientColor,
             isLoading: isLoading,
@@ -57,7 +57,7 @@ public struct GradientLoadingButton: View {
                 action()
             } label: {
                 Text(isLoading ? "" : title)
-                    .poppins(18)
+                    .font(.title2)
                     .fontWeight(.bold)
                     .foregroundStyle(tintColor)
                     .frame(maxWidth: .infinity)
